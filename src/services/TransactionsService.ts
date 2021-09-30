@@ -8,7 +8,8 @@ export interface Transaction {
     id: number
     to: string
     from: string
-    value: number 
+    value: number,
+    date: string 
 }
 
 export interface TransactionsServiceState {
@@ -32,9 +33,12 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
      */
     public async addTransaction(newTransaction: Transaction): Promise<void> {
         return new Promise<void>((resolve) => {
+            const state = this.getState();
+            this.updateState({transactions: [...state.transactions, newTransaction]});
+
             setTimeout(() => {
                 resolve(
-
+                    
                 )
             }, 300);
         })
@@ -46,9 +50,10 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
      */
     public async getListOfTransactions(): Promise<Array<Transaction>>  {
         return new Promise<Array<Transaction>>((resolve) => {
+            const { transactions } = this.getState();
             setTimeout(() => {
                 resolve(
-
+                    transactions
                 )
             }, 300);
         })

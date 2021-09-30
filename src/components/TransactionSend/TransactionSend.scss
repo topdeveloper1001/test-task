@@ -1,0 +1,15 @@
+.transaction-send {
+    &-action {
+        display: flex;
+        align-items: center;
+
+        button {
+            flex: 1;
+            margin-right: 10px;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

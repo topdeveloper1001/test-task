@@ -1,5 +1,32 @@
 import Actions, { SetStateAction, SetTransactionAction } from '../contextActions';
-import { IAppState } from './AppState';
+import { Transaction } from '../../services/TransactionsService';
+import defaults from '../../utils/constants';
+
+const foramtTransactions = () => {
+  return Object.values(defaults.pastTransactions).map((transaction, index) => {
+    return {
+      id: index,
+      from: defaults.publicAddress,
+      to: transaction.recipient,
+      value: Number(transaction.amount),
+      date: transaction.date
+    };
+  })
+}
+
+export interface IAppState {
+  publicAddress: string,
+  accountBalance: number,
+  ethPrice: number,
+  transactions: Array<Transaction>;
+}
+
+export const initAppState: IAppState = {
+  publicAddress: defaults.publicAddress,
+  accountBalance: Number(defaults.accountBalance),
+  ethPrice: Number(defaults.ethPrice),
+  transactions: foramtTransactions(),
+};
 
 type AppAction = SetTransactionAction | SetStateAction;
 
