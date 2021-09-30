@@ -1,0 +1,15 @@
+.transaction-list {
+    .account-info-wrapper {
+        .account-info {
+            margin-left: 10px;
+            line-height: 1.33;
+        }
+    }
+
+    .account-balance {
+        background: #eaf3fc;
+        padding: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
